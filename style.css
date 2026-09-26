@@ -1,0 +1,758 @@
+/* =====================================================
+   1. COLORS
+   Change a color here and it updates everywhere.
+   Tip: if you rename a variable, rename it everywhere it is used.
+   ===================================================== */
+:root {
+  --blue: #1456b8;
+  --navy: #071a33;     /* very dark blue */
+  --orange: #ff7a1a;
+  --white: #ffffff;
+  --grey: #f3f6fb;
+  --text: #1c2b3a;
+  --soft-text: #4a5a6b;
+}
+
+/* =====================================================
+   2. BASIC RESET AND GENERAL STYLES
+   ===================================================== */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;   /* padding does not make elements bigger */
+}
+
+html {
+  scroll-behavior: smooth;   /* smooth scrolling when clicking menu links */
+  scroll-padding-top: 70px;  /* stops the sticky header from covering titles */
+}
+
+body {
+  font-family: "Manrope", Arial, Helvetica, sans-serif;
+  color: var(--text);
+  background-color: var(--white);
+  line-height: 1.7;
+}
+
+img {
+  display: block;
+  max-width: 100%;
+}
+
+a {
+  color: var(--blue);
+}
+
+.container {
+  max-width: 1080px;
+  margin: 0 auto;   /* auto left and right = centered */
+  padding: 0 20px;
+}
+
+section {
+  padding: 80px 0;
+}
+
+h2 {
+  font-size: 34px;
+  line-height: 1.2;
+  color: var(--navy);
+  margin-bottom: 12px;
+}
+
+.section-intro {
+  max-width: 560px;
+  color: var(--soft-text);
+  margin-bottom: 40px;
+}
+
+/* Icons (the small drawings): they take the text color of their parent */
+.icon {
+  width: 26px;
+  height: 26px;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 2;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+/* =====================================================
+   3. BUTTONS
+   ===================================================== */
+.btn {
+  display: inline-block;
+  padding: 14px 28px;
+  border-radius: 8px;
+  font-weight: 800;
+  text-decoration: none;
+  transition: transform 0.3s, background-color 0.3s, color 0.3s;
+}
+
+.btn:hover {
+  transform: translateY(-3px);   /* button moves up a little */
+}
+
+.btn-orange {
+  background-color: var(--orange);
+  color: var(--navy);
+}
+
+.btn-orange:hover {
+  background-color: #ff8f3d;
+}
+
+.btn-outline {
+  border: 2px solid var(--white);
+  color: var(--white);
+}
+
+.btn-outline:hover {
+  background-color: var(--white);
+  color: var(--blue);
+}
+
+.btn-small {
+  padding: 10px 20px;
+  font-size: 14px;
+}
+
+/* grey background sections */
+.alt-section {
+  background-color: var(--grey);
+}
+
+/* =====================================================
+   4. HEADER
+   ===================================================== */
+header {
+  background-color: var(--navy);
+  position: sticky;   /* stays at the top when scrolling */
+  top: 0;
+  z-index: 100;
+  transition: box-shadow 0.3s;
+}
+
+header.scrolled {     /* this class is added by script.js */
+  box-shadow: 0 4px 18px rgba(0, 0, 0, 0.35);
+}
+
+.header-content {
+  display: flex;
+  justify-content: space-between;   /* logo left, menu right */
+  align-items: center;
+  height: 70px;
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  color: var(--white);
+  font-size: 21px;
+  font-weight: 800;
+  text-decoration: none;
+}
+
+.logo img {
+  height: 44px;
+  width: auto;
+}
+
+nav {
+  display: flex;
+  align-items: center;
+  gap: 26px;
+}
+
+nav a {
+  color: var(--white);
+  font-size: 15px;
+  font-weight: 600;
+  text-decoration: none;
+  transition: color 0.3s;
+}
+
+nav a:hover {
+  color: var(--orange);
+}
+
+.menu-button {
+  display: none;   /* hidden on computers, shown on phones (see the bottom of this file) */
+  background: none;
+  border: 2px solid var(--white);
+  color: var(--white);
+  padding: 6px 16px;
+  border-radius: 6px;
+  font-family: inherit;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+/* =====================================================
+   5. HERO
+   ===================================================== */
+.hero {
+  background-color: var(--blue);
+  color: var(--white);
+  padding: 80px 0 90px;
+  overflow: hidden;
+}
+
+.hero-content {
+  display: flex;
+  align-items: center;
+  gap: 60px;
+}
+
+.hero-text {
+  flex: 1;
+}
+
+.tagline {
+  font-weight: 600;
+  color: #cfe0ff;
+  margin-bottom: 14px;
+}
+
+.hero h1 {
+  font-size: 54px;
+  font-weight: 800;
+  line-height: 1.1;
+  margin-bottom: 20px;
+}
+
+.hero-description {
+  max-width: 480px;
+  font-size: 18px;
+  color: #e6efff;
+  margin-bottom: 32px;
+}
+
+.hero-buttons {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 14px;
+}
+
+.hero-image {
+  position: relative;
+  flex: 1;
+  max-width: 460px;
+}
+
+.hero-image img {
+  position: relative;
+  width: 100%;
+  border-radius: 14px;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+}
+
+/* =====================================================
+   7. SERVICES
+   ===================================================== */
+/* CCTV feature box */
+.feature {
+  display: flex;
+  align-items: center;
+  gap: 50px;
+  background-color: var(--grey);
+  border-radius: 16px;
+  padding: 40px;
+  margin-bottom: 70px;
+}
+
+.feature img {
+  width: 44%;
+  border-radius: 12px;
+  box-shadow: 0 12px 28px rgba(7, 26, 51, 0.2);
+}
+
+.feature-text {
+  flex: 1;
+}
+
+.feature-text h3 {
+  font-size: 28px;
+  color: var(--navy);
+  margin-bottom: 10px;
+}
+
+.check-list {
+  list-style: none;
+  margin: 18px 0 26px 0;
+}
+
+.check-list li {
+  position: relative;
+  padding-left: 30px;
+  margin-bottom: 8px;
+  font-weight: 600;
+}
+
+.check-list li::before {
+  content: "\2713";   /* check mark */
+  position: absolute;
+  left: 0;
+  color: var(--blue);
+  font-weight: 800;
+}
+
+.sub-title {
+  font-size: 26px;
+  color: var(--navy);
+  margin-bottom: 30px;
+}
+
+/* IT services grid: columns fill the space automatically */
+.it-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 34px 40px;
+}
+
+.it-item {
+  display: flex;
+  gap: 16px;
+}
+
+.it-icon {
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 52px;
+  height: 52px;
+  border-radius: 12px;
+  background-color: #e3edfb;
+  color: var(--blue);
+  transition: background-color 0.3s, color 0.3s, transform 0.3s;
+}
+
+.it-item:hover .it-icon {
+  background-color: var(--orange);
+  color: var(--navy);
+  transform: rotate(-8deg);
+}
+
+.it-item h4 {
+  font-size: 17px;
+  line-height: 1.3;
+  color: var(--navy);
+  margin-bottom: 4px;
+}
+
+.it-item p {
+  font-size: 15px;
+  color: var(--soft-text);
+}
+
+/* =====================================================
+   7B. PRODUCTS
+   ===================================================== */
+.product-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 24px;
+}
+
+.product {
+  display: flex;
+  flex-direction: column;   /* picture on top, text below */
+  background-color: var(--white);
+  border-radius: 12px;
+  overflow: hidden;   /* keeps the zoomed picture inside the card */
+  transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.product:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 14px 28px rgba(7, 26, 51, 0.15);
+}
+
+.product-image {
+  height: 220px;
+  overflow: hidden;   /* keeps the zoomed picture inside the box */
+  border-bottom: 1px solid #e3e9f2;
+}
+
+.product-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;   /* fills the box without stretching the picture */
+  object-position: center 20%;   /* which part of the picture stays visible */
+  transition: transform 0.5s;
+}
+
+/* pictures with a white background: shown in full, not cropped */
+.product-image.cutout {
+  padding: 16px;
+}
+
+.product-image.cutout img {
+  object-fit: contain;
+}
+
+/* light blue background for the router picture */
+.product-image.sky {
+  background-color: #dbf6ff;
+}
+
+.product:hover .product-image img {
+  transform: scale(1.08);
+}
+
+.product-info {
+  flex: 1;   /* fills the card so all buttons line up at the bottom */
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  padding: 22px;
+}
+
+.product-info h3 {
+  font-size: 20px;
+  color: var(--navy);
+  margin-bottom: 6px;
+}
+
+.product-info p {
+  flex: 1;
+  color: var(--soft-text);
+  margin-bottom: 18px;
+}
+
+/* =====================================================
+   8. WHY US
+   ===================================================== */
+.why-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 24px;
+}
+
+.why-item {
+  background-color: var(--grey);
+  border-top: 4px solid var(--blue);
+  border-radius: 0 0 10px 10px;
+  padding: 26px 20px;
+  transition: transform 0.3s, border-color 0.3s, box-shadow 0.3s;
+}
+
+.why-item:hover {
+  transform: translateY(-6px);
+  border-color: var(--orange);
+  box-shadow: 0 12px 24px rgba(7, 26, 51, 0.15);
+}
+
+.why-item .icon {
+  width: 32px;
+  height: 32px;
+  color: var(--blue);
+  margin-bottom: 12px;
+}
+
+.why-item h3 {
+  font-size: 17px;
+  line-height: 1.3;
+  color: var(--navy);
+  margin-bottom: 6px;
+}
+
+.why-item p {
+  font-size: 15px;
+  color: var(--soft-text);
+}
+
+/* =====================================================
+   9. CLIENTS
+   ===================================================== */
+.client-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(170px, 1fr));
+  gap: 16px;
+}
+
+.client {
+  overflow: hidden;   /* keeps the zoomed picture inside the tile */
+  background-color: var(--navy);
+  color: var(--white);
+  border-bottom: 5px solid var(--orange);
+  transition: transform 0.3s, background-color 0.3s;
+}
+
+.client:hover {
+  background-color: var(--blue);
+  transform: translateY(-6px);
+}
+
+.client img {
+  width: 100%;
+  height: 125px;
+  object-fit: cover;   /* fills the box without stretching the picture */
+  transition: transform 0.5s;
+}
+
+.client:hover img {
+  transform: scale(1.1);
+}
+
+.client-text {
+  padding: 18px 20px 24px 20px;
+}
+
+.client h3 {
+  font-size: 19px;
+  margin-bottom: 6px;
+}
+
+.client p {
+  font-size: 14px;
+  color: #c9d8ee;
+}
+
+/* Brands we install */
+.brands {
+  margin-top: 50px;
+}
+
+.brands h3 {
+  font-size: 18px;
+  color: var(--navy);
+}
+
+.brands p {
+  font-size: 24px;
+  font-weight: 800;
+  color: var(--blue);
+}
+
+/* =====================================================
+   10. CONTACT
+   ===================================================== */
+#contact {
+  background-color: var(--blue);
+}
+
+#contact h2 {
+  color: var(--white);
+  margin-bottom: 36px;
+}
+
+.contact-grid {
+  display: flex;
+  flex-wrap: wrap;   /* cards move to the next line when there is no space */
+  gap: 20px;
+}
+
+.contact-card {
+  flex: 1 1 400px;
+  background-color: var(--white);
+  color: var(--navy);
+  padding: 24px;
+  border-radius: 12px;
+  text-decoration: none;
+  overflow-wrap: anywhere;   /* long email can break to the next line */
+  transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.contact-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25);
+}
+
+.contact-card span {
+  display: block;
+}
+
+.contact-card .label {
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--soft-text);
+}
+
+.contact-card .value {
+  font-size: 20px;
+  font-weight: 800;
+  line-height: 1.4;
+}
+
+.contact-card .small {
+  font-size: 14px;
+  color: var(--soft-text);
+  margin-top: 4px;
+}
+
+/* =====================================================
+   11. FOOTER
+   ===================================================== */
+footer {
+  background-color: var(--navy);
+  color: #c9d8ee;
+  text-align: center;
+  padding: 30px 0;
+  font-size: 14px;
+}
+
+footer .slogan {
+  color: var(--orange);
+  font-weight: 800;
+}
+
+/* Call bar at the bottom of phones (hidden on computers) */
+.mobile-bar {
+  display: none;
+}
+
+/* =====================================================
+   12. ANIMATIONS
+   ===================================================== */
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(28px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes slideIn {
+  from { opacity: 0; transform: translateX(50px); }
+  to   { opacity: 1; transform: translateX(0); }
+}
+
+/* When the page opens: hero text comes up one by one, the picture slides in */
+.hero-text > * {
+  animation: fadeUp 0.8s ease both;
+}
+
+.hero-text > *:nth-child(2) { animation-delay: 0.15s; }
+.hero-text > *:nth-child(3) { animation-delay: 0.3s; }
+.hero-text > *:nth-child(4) { animation-delay: 0.45s; }
+
+.hero-image {
+  animation: slideIn 1s ease 0.3s both;
+}
+
+/* When scrolling: elements with class "reveal" fade in.
+   script.js adds the class "show" when they come into view. */
+.js .reveal {
+  opacity: 0;
+  transform: translateY(34px);
+  transition: opacity 0.8s ease, transform 0.8s ease;
+}
+
+.js .reveal.show {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* People who turned off animations on their device will not see them */
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation: none !important;
+    transition: none !important;
+  }
+  .js .reveal {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+/* =====================================================
+   13. PHONES AND TABLETS (screen 800px wide or less)
+   ===================================================== */
+@media (max-width: 800px) {
+
+  section {
+    padding: 60px 0;
+  }
+
+  h2 {
+    font-size: 28px;
+  }
+
+  /* menu becomes a button that opens a list */
+  .menu-button {
+    display: block;
+  }
+
+  nav {
+    display: none;
+    position: absolute;
+    top: 70px;
+    left: 0;
+    right: 0;
+    flex-direction: column;
+    align-items: stretch;
+    gap: 0;
+    background-color: var(--navy);
+    padding: 10px 20px 20px 20px;
+  }
+
+  nav.open {           /* script.js adds "open" when the button is clicked */
+    display: flex;
+  }
+
+  nav a {
+    padding: 14px 0;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.12);
+  }
+
+  /* hero: text on top, picture below */
+  .hero {
+    padding: 50px 0 60px;
+  }
+
+  .hero-content {
+    flex-direction: column;
+    gap: 45px;
+  }
+
+  .hero h1 {
+    font-size: 38px;
+  }
+
+  .hero-image {
+    width: 100%;
+    max-width: 100%;
+  }
+
+  .feature {
+    flex-direction: column;
+    padding: 24px;
+    gap: 30px;
+  }
+
+  .feature img {
+    width: 100%;
+  }
+
+  /* call bar stays at the bottom of the phone screen */
+  .mobile-bar {
+    display: flex;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    z-index: 100;
+  }
+
+  .mobile-bar a {
+    flex: 1;
+    padding: 14px;
+    text-align: center;
+    font-weight: 800;
+    text-decoration: none;
+  }
+
+  .bar-call {
+    background-color: var(--orange);
+    color: var(--navy);
+  }
+
+  .bar-whatsapp {
+    background-color: var(--navy);
+    color: var(--white);
+  }
+
+  body {
+    padding-bottom: 52px;   /* space so the call bar does not cover the footer */
+  }
+}
